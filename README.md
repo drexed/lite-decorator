@@ -1,8 +1,10 @@
 # Lite::Decorator
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/lite/decorator`. To experiment with that code, run `bin/console` for an interactive prompt.
+[![Gem Version](https://badge.fury.io/rb/lite-decorator.svg)](http://badge.fury.io/rb/lite-decorator)
+[![Build Status](https://travis-ci.org/drexed/lite-decorator.svg?branch=master)](https://travis-ci.org/drexed/lite-decorator)
 
-TODO: Delete this and the text above, and describe your gem
+Lite::Decorator is a library for using the decorator pattern to separate view/presentation
+logic from classes.
 
 ## Installation
 
@@ -20,9 +22,41 @@ Or install it yourself as:
 
     $ gem install lite-decorator
 
+## Table of Contents
+
+* [Usage](#usage)
+* [Access](#access)
+
 ## Usage
 
-TODO: Write usage instructions here
+Using the decorator class is as simple as creating a class that inherits from the base file.
+
+```ruby
+class UserDecorator < Lite::Decorator::Base
+
+  def full_name
+    first_name + ' ' + last_name
+  end
+
+end
+```
+
+## Access
+
+To access the decorator you need to pass the object to the decorator class and thats it.
+You can even decorate a collection of objects by passing the collection to `decorate`.
+
+```ruby
+user = User.first # || User.all
+
+decorator = UserDecorator.new(user)
+
+# - or -
+
+decorator = UserDecorator.decorate(user)
+
+decorator.full_name #=> "John Doe"
+```
 
 ## Development
 

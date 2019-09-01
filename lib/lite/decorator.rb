@@ -1,10 +1,5 @@
 # frozen_string_literal: true
 
-require 'lite/decorator/version'
-
-module Lite
-  module Decorator
-    class Error < StandardError; end
-    # Your code goes here...
-  end
+%w[version base].each do |name|
+  require "lite/decorator/#{name}"
 end
