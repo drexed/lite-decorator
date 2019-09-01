@@ -1,4 +1,6 @@
-require "lite/decorator/version"
+# frozen_string_literal: true
+
+require 'lite/decorator/version'
 
 module Lite
   module Decorator
