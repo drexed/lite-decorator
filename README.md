@@ -24,15 +24,25 @@ Or install it yourself as:
 
 ## Table of Contents
 
+* [Setup](#setup)
 * [Usage](#usage)
-* [Access](#access)
 
 ## Usage
 
-Using the decorator class is as simple as creating a class that inherits from the base file.
+`rails g lite:decorator:install` will generate the following file:
+`../app/decorators/application_decorator.rb`
 
 ```ruby
-class UserDecorator < Lite::Decorator::Base
+class ApplicationDecorator < Lite::Query::Base
+end
+```
+
+Use `rails g decorator NAME` will generate the following file: `../app/decorators/[name]_decorator.rb`
+
+You will then need to fill this class with the methods you want to decorate:
+
+```ruby
+class UserDecorator < ApplicationDecorator
 
   def full_name
     first_name + ' ' + last_name

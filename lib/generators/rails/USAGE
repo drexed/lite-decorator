@@ -1,0 +1,9 @@
+Description:
+    Generate a decorator file
+
+Example:
+    rails generate decorator NAME
+
+    This will create:
+        - app/decorators/[name]_decorator.rb
+        - spec/decorators/[name]_decorator_spec.rb
