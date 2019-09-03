@@ -27,7 +27,7 @@ Or install it yourself as:
 * [Setup](#setup)
 * [Usage](#usage)
 
-## Usage
+## Setup
 
 `rails g lite:decorator:install` will generate the following file:
 `../app/decorators/application_decorator.rb`
@@ -37,7 +37,8 @@ class ApplicationDecorator < Lite::Query::Base
 end
 ```
 
-Use `rails g decorator NAME` will generate the following file: `../app/decorators/[name]_decorator.rb`
+Use `rails g decorator NAME` will generate the following file:
+`../app/decorators/[name]_decorator.rb`
 
 You will then need to fill this class with the methods you want to decorate:
 
@@ -51,7 +52,7 @@ class UserDecorator < ApplicationDecorator
 end
 ```
 
-## Access
+## Usage
 
 To access the decorator you need to pass the object to the decorator class and thats it.
 You can even decorate a collection of objects by passing the collection to `decorate`.
