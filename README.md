@@ -33,7 +33,7 @@ Or install it yourself as:
 `../app/decorators/application_decorator.rb`
 
 ```ruby
-class ApplicationDecorator < Lite::Query::Base
+class ApplicationDecorator < Lite::Decorator::Base
 end
 ```
 
