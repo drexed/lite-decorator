@@ -6,4 +6,3 @@ Example:
 
     This will create:
         - app/decorators/[name]_decorator.rb
-        - spec/decorators/[name]_decorator_spec.rb

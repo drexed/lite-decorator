@@ -29,21 +29,24 @@ Or install it yourself as:
 
 ## Setup
 
-`rails g lite:decorator:install` will generate the following file:
-`../app/decorators/application_decorator.rb`
+### Generator
 
-```ruby
-class ApplicationDecorator < Lite::Decorator::Base
-end
+Use `rails g decorator NAME` will generate the following files:
+
+```erb
+app/decorators/[name]_decorator.rb
 ```
 
-Use `rails g decorator NAME` will generate the following file:
-`../app/decorators/[name]_decorator.rb`
+If a `ApplicationDecorator` file in the `app/decorators` directory is available, the
+generator will create file that inherit from `ApplicationDecorator` if not it will
+fallback to `Lite::Decorator::Base`.
 
-You will then need to fill this class with the methods you want to decorate:
+## Decorator
+
+You will need to fill this class with the methods you want to decorate:
 
 ```ruby
-class UserDecorator < ApplicationDecorator
+class UserDecorator < Lite::Decorator::Base
 
   def full_name
     first_name + ' ' + last_name

@@ -14,12 +14,6 @@ module Rails
       template('decorator.rb.tt', path)
     end
 
-    def copy_specs
-      path = File.join('spec', 'decorators', class_path, "#{file_name}_decorator_spec.rb")
-      empty_directory('spec/decorators')
-      template('spec.rb.tt', path)
-    end
-
     private
 
     def file_name
