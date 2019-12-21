@@ -10,7 +10,6 @@ module Rails
 
     def copy_files
       path = File.join('app', 'decorators', class_path, "#{file_name}_decorator.rb")
-      empty_directory('app/decorators')
       template('decorator.rb.tt', path)
     end
 
