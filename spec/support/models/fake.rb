@@ -3,11 +3,11 @@
 class Fake
 
   def first_name
-    'John'
+    "John"
   end
 
   def last_name
-    'Doe'
+    "Doe"
   end
 
 end

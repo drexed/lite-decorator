@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'delegate' unless defined?(SimpleDelegator)
+require "delegate" unless defined?(SimpleDelegator)
 
 module Lite
   module Decorator

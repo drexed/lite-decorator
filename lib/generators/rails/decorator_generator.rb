@@ -3,12 +3,12 @@
 module Rails
   class DecoratorGenerator < Rails::Generators::NamedBase
 
-    source_root File.expand_path('../templates', __FILE__)
-    check_class_collision suffix: 'Decorator'
+    source_root File.expand_path("../templates", __FILE__)
+    check_class_collision suffix: "Decorator"
 
     def copy_files
-      path = File.join('app', 'decorators', class_path, "#{file_name}_decorator.rb")
-      template('decorator.rb.tt', path)
+      path = File.join("app", "decorators", class_path, "#{file_name}_decorator.rb")
+      template("decorator.rb.tt", path)
     end
 
     private
@@ -18,7 +18,7 @@ module Rails
     end
 
     def remove_possible_suffix(name)
-      name.sub(/_?decorator$/i, '')
+      name.sub(/_?decorator$/i, "")
     end
 
   end

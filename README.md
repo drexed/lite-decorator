@@ -29,19 +29,19 @@ Or install it yourself as:
 
 ## Setup
 
-### Generator
+#### Generator
 
 Use `rails g decorator NAME` will generate the following files:
 
 ```erb
-app/decorators/[name]_decorator.rb
+app/decorators/[NAME]_decorator.rb
 ```
 
-If a `ApplicationDecorator` file in the `app/decorators` directory is available, the
+If an `ApplicationDecorator` file in the `app/decorators` directory is available, the
 generator will create file that inherit from `ApplicationDecorator` if not it will
 fallback to `Lite::Decorator::Base`.
 
-## Decorator
+#### Decorator
 
 You will need to fill this class with the methods you want to decorate:
 
@@ -57,19 +57,20 @@ end
 
 ## Usage
 
-To access the decorator you need to pass the object to the decorator class and thats it.
-You can even decorate a collection of objects by passing the collection to `decorate`.
+To access the decorator you need to pass the object to the decorator class.
 
+#### Instance
 ```ruby
-user = User.first # || User.all
-
+user = User.first
 decorator = UserDecorator.new(user)
-
-# - or -
-
-decorator = UserDecorator.decorate(user)
-
 decorator.full_name #=> "John Doe"
+```
+
+#### Collection
+```ruby
+users = User.all
+collection = UserDecorator.new(users)
+collection.map(&:full_name) #=> ["John Doe", "Jane Poe"]
 ```
 
 ## Development
@@ -80,7 +81,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/lite-decorator. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/drexed/lite-decorator. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
@@ -88,4 +89,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Lite::Decorator project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/lite-decorator/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the Lite::Decorator project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/drexed/lite-decorator/blob/master/CODE_OF_CONDUCT.md).
