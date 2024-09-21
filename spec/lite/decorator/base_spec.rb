@@ -11,22 +11,22 @@ class Decorator < Lite::Decorator::Base
 end
 
 RSpec.describe Lite::Decorator::Base do
-  let(:fake) { Fake.new }
+  let(:poro) { Poro.new }
   let(:user) { User.new(first_name: "John", last_name: "Doe") }
 
-  let(:fake_decorator) { Decorator.new(fake) }
+  let(:poro_decorator) { Decorator.new(poro) }
   let(:user_decorator) { Decorator.new(user) }
 
   describe "#delegation" do
     it 'to be "John Doe"' do
-      expect(fake_decorator.full_name).to eq("John Doe")
+      expect(poro_decorator.full_name).to eq("John Doe")
       expect(user_decorator.full_name).to eq("John Doe")
     end
   end
 
   describe "#decorate" do
     it "to be a Decorator object for POROs" do
-      result = Decorator.decorate(fake)
+      result = Decorator.decorate(poro)
 
       expect(result.full_name).to eq("John Doe")
     end
@@ -38,7 +38,7 @@ RSpec.describe Lite::Decorator::Base do
     end
 
     it "to be Decorator objects for PORO collections" do
-      result = Decorator.decorate([fake])
+      result = Decorator.decorate([poro])
 
       expect(result.map(&:full_name)).to eq(["John Doe"])
     end
@@ -54,7 +54,7 @@ RSpec.describe Lite::Decorator::Base do
 
   describe ".class" do
     it "to be a Decorator class object" do
-      expect(fake_decorator.class).to eq(Decorator)
+      expect(poro_decorator.class).to eq(Decorator)
     end
 
     it "to be a User class object" do
@@ -63,8 +63,8 @@ RSpec.describe Lite::Decorator::Base do
   end
 
   describe ".object" do
-    it "to be a Fake instance object" do
-      expect(fake_decorator.object.is_a?(Fake)).to be(true)
+    it "to be a Poro instance object" do
+      expect(poro_decorator.object.is_a?(Poro)).to be(true)
     end
 
     it "to be a User instance object" do
@@ -73,8 +73,8 @@ RSpec.describe Lite::Decorator::Base do
   end
 
   describe ".to_model" do
-    it "to be a Fake object" do
-      expect(fake_decorator.to_model.is_a?(Fake)).to be(true)
+    it "to be a Poro object" do
+      expect(poro_decorator.to_model.is_a?(Poro)).to be(true)
     end
 
     it "to be a User object" do

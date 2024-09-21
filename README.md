@@ -26,6 +26,7 @@ Or install it yourself as:
 
 * [Setup](#setup)
 * [Usage](#usage)
+* [ActiveRecord](#active_record)
 
 ## Setup
 
@@ -58,6 +59,7 @@ end
 ## Usage
 
 To access the decorator you need to pass the object to the decorator class.
+PORO's just like active record objects can be decorated as well in this method.
 
 #### Instance
 ```ruby
@@ -71,6 +73,18 @@ decorator.full_name #=> "John Doe"
 users = User.all
 collection = UserDecorator.new(users)
 collection.map(&:full_name) #=> ["John Doe", "Jane Poe"]
+```
+
+## ActiveRecord
+
+Including the record module will automatically lazy delegate methods to decorators
+if available. If neither the class instance and the decorator contain the method,
+a `NoMethodError` just like normal.
+
+```ruby
+class User < ActiveRecord::Base
+  include Lite::Decorator::Record
+end
 ```
 
 ## Development

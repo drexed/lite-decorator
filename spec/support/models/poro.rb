@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Fake
+class Poro
 
   def first_name
     "John"
