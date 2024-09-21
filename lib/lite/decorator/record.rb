@@ -5,7 +5,9 @@ module Lite
     module Record
 
       def decorator_class
-        "#{self.class.name}Decorator".safe_constantize
+        return @decorator_class if defined?(@decorator_class)
+
+        @decorator_class = "#{self.class.name}Decorator".safe_constantize
       end
 
       def decorator
