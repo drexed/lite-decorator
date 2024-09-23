@@ -2,10 +2,10 @@
 
 module Lite
   module Decorator
-    module Record
+    module Delegator
 
       def self.included(base)
-        base.include Infered
+        base.include Inference
       end
 
       private
@@ -25,7 +25,7 @@ module Lite
       def respond_to_method?(method_name)
         return respond_to_method_cache[method_name] if respond_to_method_cache.key?(method_name)
 
-        respond_to_method_cache[method_name] = decorator.present? && decorator.public_methods.include?(method_name)
+        respond_to_method_cache[method_name] = decorator&.public_methods&.include?(method_name)
       end
 
       def respond_to_missing?(method_name, include_private = false)

@@ -26,7 +26,6 @@ Or install it yourself as:
 
 * [Setup](#setup)
 * [Usage](#usage)
-* [ActiveRecord](#active_record)
 
 ## Setup
 
@@ -75,33 +74,31 @@ collection = UserDecorator.new(users)
 collection.map(&:full_name) #=> ["John Doe", "Jane Poe"]
 ```
 
-## Infered decoration
+#### Infered decoration
 
-Including the `Infered` module will setup a `decorator_class` and `decorator` method
+Including the `Inference` module will setup a `decorator_class` and `decorator` method
 that you can access via your PORO and ActiveRecord objects.
 
 ```ruby
-class User < ActiveRecord::Base
-  include Lite::Decorator::Infered
+class User
+  include Lite::Decorator::Inference
 end
 
-# Usage
 user = User.first
 user.decorator.full_name
 ```
 
-## Record decoration
+#### Decorator delegation
 
-Including the `Record` module will use method missing to delegate decorator methods as
-if it lived on the ActiveRecord object itself. If neither the class instance and the
+Including the `Delegator` module will use method missing to delegate decorator methods as
+if it lived on the PORO or ActiveRecord object itself. If neither the class instance and the
 decorator contain the method, a `NoMethodError` just like normal.
 
 ```ruby
 class User < ActiveRecord::Base
-  include Lite::Decorator::Record
+  include Lite::Decorator::Delegator
 end
 
-# Usage
 user = User.first
 user.full_name
 ```

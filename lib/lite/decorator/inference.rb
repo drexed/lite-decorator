@@ -2,7 +2,7 @@
 
 module Lite
   module Decorator
-    module Infered
+    module Inference
 
       def decorator_class
         return @decorator_class if defined?(@decorator_class)

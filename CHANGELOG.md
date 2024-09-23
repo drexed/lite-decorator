@@ -6,6 +6,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.1] - 2024-09-23
+### Changed
+- Rename `Infered` to `Inference` and `Record` to `Delegator`
+
+## [2.0.0] - 2024-09-22
+### Changed
+- Split inference from lazy delegation
+
 ## [1.3.1] - 2024-09-20
 ### Changed
 - Memoize record decorator class
