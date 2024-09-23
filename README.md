@@ -59,7 +59,7 @@ end
 ## Usage
 
 To access the decorator you need to pass the object to the decorator class.
-PORO's just like active record objects can be decorated as well in this method.
+PORO's and ActiveRecord objects can be decorated with this method.
 
 #### Instance
 ```ruby
@@ -75,16 +75,35 @@ collection = UserDecorator.new(users)
 collection.map(&:full_name) #=> ["John Doe", "Jane Poe"]
 ```
 
-## ActiveRecord
+## Infered decoration
 
-Including the record module will automatically lazy delegate methods to decorators
-if available. If neither the class instance and the decorator contain the method,
-a `NoMethodError` just like normal.
+Including the `Infered` module will setup a `decorator_class` and `decorator` method
+that you can access via your PORO and ActiveRecord objects.
+
+```ruby
+class User < ActiveRecord::Base
+  include Lite::Decorator::Infered
+end
+
+# Usage
+user = User.first
+user.decorator.full_name
+```
+
+## Record decoration
+
+Including the `Record` module will use method missing to delegate decorator methods as
+if it lived on the ActiveRecord object itself. If neither the class instance and the
+decorator contain the method, a `NoMethodError` just like normal.
 
 ```ruby
 class User < ActiveRecord::Base
   include Lite::Decorator::Record
 end
+
+# Usage
+user = User.first
+user.full_name
 ```
 
 ## Development

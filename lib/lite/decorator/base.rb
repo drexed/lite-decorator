@@ -6,14 +6,10 @@ module Lite
   module Decorator
     class Base < SimpleDelegator
 
-      class << self
+      def self.decorate(object)
+        return new(object) unless object.respond_to?(:each)
 
-        def decorate(object)
-          return new(object) unless object.respond_to?(:each)
-
-          object.map { |obj| new(obj) }
-        end
-
+        object.map { |obj| new(obj) }
       end
 
       def class

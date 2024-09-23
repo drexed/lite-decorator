@@ -4,14 +4,8 @@ module Lite
   module Decorator
     module Record
 
-      def decorator_class
-        return @decorator_class if defined?(@decorator_class)
-
-        @decorator_class = "#{self.class.name}Decorator".safe_constantize
-      end
-
-      def decorator
-        @decorator ||= decorator_class&.new(self)
+      def self.included(base)
+        base.include Infered
       end
 
       private

@@ -2,16 +2,12 @@
 
 require "spec_helper"
 
-class UserDecorator < Lite::Decorator::Base
-
-  def initials
-    "#{first_name[0]}#{last_name[0]}"
-  end
-
-end
-
 RSpec.describe Lite::Decorator::Record do
-  let(:user) { User.include(described_class).new(first_name: "John", last_name: "Doe") }
+  let(:user) do
+    User
+      .include(described_class)
+      .new(first_name: "John", last_name: "Doe")
+  end
 
   describe ".decorator" do
     context "when method in model" do
