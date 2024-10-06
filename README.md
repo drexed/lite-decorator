@@ -30,7 +30,7 @@ Or install it yourself as:
 
 ## Setup
 
-Defining a decorator is as simple as inheriting from the base class and adding your logic.
+Defining a decorator is as simple as inheriting the base class and adding your logic.
 
 ```ruby
 class UserDecorator < Lite::Decorator::Base
