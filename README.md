@@ -26,24 +26,11 @@ Or install it yourself as:
 
 * [Setup](#setup)
 * [Usage](#usage)
+* [Generator](#generator)
 
 ## Setup
 
-#### Generator
-
-Use `rails g decorator NAME` will generate the following files:
-
-```erb
-app/decorators/[NAME]_decorator.rb
-```
-
-If an `ApplicationDecorator` file in the `app/decorators` directory is available, the
-generator will create file that inherit from `ApplicationDecorator` if not it will
-fallback to `Lite::Decorator::Base`.
-
-#### Decorator
-
-You will need to fill this class with the methods you want to decorate:
+Defining a decorator is as simple as inheriting from the base class and adding your logic.
 
 ```ruby
 class UserDecorator < Lite::Decorator::Base
@@ -60,21 +47,21 @@ end
 To access the decorator you need to pass the object to the decorator class.
 PORO's and ActiveRecord objects can be decorated with this method.
 
-#### Instance
+### Instance
 ```ruby
 user = User.first
 decorator = UserDecorator.new(user)
 decorator.full_name #=> "John Doe"
 ```
 
-#### Collection
+### Collection
 ```ruby
 users = User.all
 collection = UserDecorator.new(users)
 collection.map(&:full_name) #=> ["John Doe", "Jane Poe"]
 ```
 
-#### Infered decoration
+### Infered decoration
 
 Including the `Inference` module will setup a `decorator_class` and `decorator` method
 that you can access via your PORO and ActiveRecord objects.
@@ -88,7 +75,7 @@ user = User.first
 user.decorator.full_name
 ```
 
-#### Decorator delegation
+### Decorator delegation
 
 Including the `Delegator` module will use method missing to delegate decorator methods as
 if it lived on the PORO or ActiveRecord object itself. If neither the class instance and the
@@ -102,6 +89,18 @@ end
 user = User.first
 user.full_name
 ```
+
+## Generator
+
+Use `rails g decorator NAME` will generate the following files:
+
+```erb
+app/decorators/[NAME]_decorator.rb
+```
+
+If an `ApplicationDecorator` file in the `app/decorators` directory is available, the
+generator will create file that inherit from `ApplicationDecorator` if not it will
+fallback to `Lite::Decorator::Base`.
 
 ## Development
 
